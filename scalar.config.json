@@ -131,6 +131,15 @@
             "type": "page",
             "title": "Recipe: project API",
             "filepath": "docs/site/start/recipe-projects-api.mdx"
+          },
+          "/templates": {
+            "type": "page",
+            "title": "Templates",
+            "filepath": "docs/site/start/templates.mdx",
+            "showInSidebar": true,
+            "layout": {
+              "sidebar": true
+            }
           }
         }
       },
