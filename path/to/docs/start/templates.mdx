@@ -1,88 +1,90 @@
 ---
 title: Ryvax.js templates
-subtitle: Start from production-oriented open-source templates
+subtitle: Production-ready starting points for ambitious products
 icon: layer-group
 ---
 
 # Ryvax.js templates
 
-The official Ryvax.js templates provide complete starting points for two common application surfaces: a documentation product and a streaming AI chat. Both repositories are open source, use TypeScript, and include build validation plus deployment workflows.
+Explore a curated collection of open-source application templates designed to demonstrate what can be built with Ryvax.js. Each template combines a refined interface with a practical full-stack foundation, giving teams a stronger starting point for products that need speed, clarity, and room to evolve.
 
-## Available templates
+> **Built with Ryvax.js** — React-first development, typed boundaries, server capabilities, streaming workflows, and an architecture designed for real products.
+
+## Start with a complete foundation
 
 <Columns cols={2}>
-  <Card title="Documentation template" icon="book-open" href="https://github.com/kvantjs/ryvax-docs-template">
-    A polished docs application with navigation, API exploration, OpenAPI data, playgrounds, and Ryvax.js runtime configuration.
+  <Card title="Documentation platform" icon="book-open" href="https://github.com/kvantjs/ryvax-docs-template">
+    A polished documentation experience for frameworks, APIs, developer platforms, and technical products.
   </Card>
-  <Card title="AI chat template" icon="robot" href="https://github.com/kvantjs/ryvax-ai-chat-template">
-    A full-stack chat interface with Gemini integration, server-side secret handling, model fallback, SSE streaming, and search grounding.
+  <Card title="AI chat experience" icon="robot" href="https://github.com/kvantjs/ryvax-ai-chat-template">
+    A refined conversational interface for intelligent assistants, model-powered products, and streaming AI workflows.
   </Card>
 </Columns>
 
-## Choose a starting point
+## Documentation platform
 
-| If you are building | Start with | What it includes |
-| --- | --- | --- |
-| A framework, API, or product documentation site | Documentation template | Navigation, API explorer, interactive playgrounds, OpenAPI reference, and static deployment configuration. |
-| A conversational product or AI assistant | AI chat template | React UI, Node server, streaming endpoints, model fallback, and server-only Gemini credentials. |
+The Documentation Platform template turns technical knowledge into a clear, navigable product experience. It includes an expressive content structure, API exploration, interactive playgrounds, OpenAPI reference data, search-oriented navigation, and a visual system designed for long-form technical content.
 
-## Documentation template
+### Designed for
 
-Clone the repository and install its dependencies:
+| Product surface | Value |
+| --- | --- |
+| Framework documentation | Explain architecture, APIs, conventions, and production practices in one coherent experience. |
+| Developer platforms | Combine guides, references, examples, and interactive exploration without fragmenting the journey. |
+| API products | Present contracts, operations, request examples, and conceptual guidance side by side. |
 
-```bash
-git clone https://github.com/kvantjs/ryvax-docs-template.git
-cd ryvax-docs-template
-npm install
-npm run dev
-```
+[Explore the Documentation Platform template →](https://github.com/kvantjs/ryvax-docs-template)
 
-The production build is static and can be published to Vercel, GitHub Pages, or Netlify. The repository includes GitHub Actions workflows for each target.
+## AI chat experience
 
-## AI chat template
+The AI Chat template provides a sophisticated foundation for conversational products. It combines a focused interface with server-side model communication, streaming responses, conversation history, model fallback, optional search grounding, and a structure that can grow into a broader agent experience.
 
-Clone the repository and configure the Gemini credential only in your local shell or a hosting provider's secret manager:
+### Designed for
 
-```bash
-git clone https://github.com/kvantjs/ryvax-ai-chat-template.git
-cd ryvax-ai-chat-template
-npm install
-export GEMINI_API_KEY="your-secret"
-npm run dev
-```
+| Product surface | Value |
+| --- | --- |
+| AI assistants | Give users a calm, focused environment for asking questions and exploring ideas. |
+| Internal copilots | Extend the interface with domain knowledge, tools, permissions, and organization context. |
+| Agent experiences | Evolve from streaming conversations toward controlled workflows with durable state and evaluation. |
 
-The credential is read by the server and is never intended for client-side code. Do not commit `.env`, `.env.local`, or any credential-bearing file.
+[Explore the AI Chat template →](https://github.com/kvantjs/ryvax-ai-chat-template)
 
-<Warning>
-The AI chat's complete server-backed experience requires a Node-capable deployment such as Vercel or another host that can run the bundled server. GitHub Pages and the static Netlify workflow publish the client preview only; they cannot execute the SSE API by themselves.
-</Warning>
+## A shared engineering foundation
 
-## Deployment workflows
+Both templates demonstrate the same principles that guide Ryvax.js applications:
 
-Both repositories include workflows for Vercel, Netlify, and GitHub Pages. Configure deployment credentials as repository secrets rather than putting them in source files.
+<Columns cols={3}>
+  <Card title="Typed boundaries" icon="shield-check">
+    Keep application behavior explicit across the client, server, data, and integration layers.
+  </Card>
+  <Card title="Responsive experiences" icon="bolt">
+    Use streaming and progressive feedback where waiting for a complete response would weaken the experience.
+  </Card>
+  <Card title="Room to grow" icon="arrow-up-right-dots">
+    Begin with a focused product surface and evolve toward richer workflows without replacing the foundation.
+  </Card>
+</Columns>
 
-| Target | Required configuration | Result |
-| --- | --- | --- |
-| Vercel | `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` | Production deployment from GitHub Actions. |
-| Netlify | `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID` | Static or provider-supported deployment from GitHub Actions. |
-| GitHub Pages | Pages enabled for the repository | Static build published through the Pages environment. |
+## Open source by design
 
-## Related topics
+The templates are public so that developers can study the structure, adapt the visual language, propose improvements, and build new products from a transparent foundation. The repositories are intentionally useful as both working applications and architectural references.
 
-- [Installation](/start/installation) — Install the framework and verify the supported runtime.
-- [First app](/start/first-app) — Understand the basic project shape.
-- [Deployment](/operations/deployment) — Review production deployment boundaries.
-- [AI agents](/platform/ai-agents) — Design controlled AI workloads.
+Browse the source, run the examples locally, and make the experience your own:
 
-## Source and contribution
+- [Ryvax.js Documentation Platform](https://github.com/kvantjs/ryvax-docs-template)
+- [Ryvax.js AI Chat](https://github.com/kvantjs/ryvax-ai-chat-template)
+- [Ryvax.js framework repository](https://github.com/kvantjs/ryvax.js)
 
-Open issues and pull requests in the template repositories. Keep framework-specific behavior in the Ryvax.js repository and application-specific policy inside each template so that updates remain portable and easy to review.
+## Continue exploring Ryvax.js
+
+- [Installation](/start/installation) — Prepare a new Ryvax.js project.
+- [First app](/start/first-app) — Understand the essential project shape.
+- [Architecture](/core/architecture) — Learn how ownership is divided across the runtime.
+- [AI agents](/platform/ai-agents) — Design controlled, observable AI workloads.
+- [Deployment](/operations/deployment) — Move a product from local development toward production.
 
 ## References
 
-[1]: https://github.com/kvantjs/ryvax.js "Ryvax.js source repository"
-[2]: https://github.com/kvantjs/ryvax-docs-template "Ryvax.js documentation template"
-[3]: https://github.com/kvantjs/ryvax-ai-chat-template "Ryvax.js AI chat template"
-[4]: https://vercel.com/docs "Vercel documentation"
-[5]: https://docs.netlify.com/ "Netlify documentation"
-[6]: https://docs.github.com/en/pages "GitHub Pages documentation"
+[1]: https://github.com/kvantjs/ryvax.js "Ryvax.js framework repository"
+[2]: https://github.com/kvantjs/ryvax-docs-template "Ryvax.js Documentation Platform template"
+[3]: https://github.com/kvantjs/ryvax-ai-chat-template "Ryvax.js AI Chat template"
