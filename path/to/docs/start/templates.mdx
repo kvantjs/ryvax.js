@@ -1,0 +1,88 @@
+---
+title: Ryvax.js templates
+subtitle: Start from production-oriented open-source templates
+icon: layer-group
+---
+
+# Ryvax.js templates
+
+The official Ryvax.js templates provide complete starting points for two common application surfaces: a documentation product and a streaming AI chat. Both repositories are open source, use TypeScript, and include build validation plus deployment workflows.
+
+## Available templates
+
+<Columns cols={2}>
+  <Card title="Documentation template" icon="book-open" href="https://github.com/kvantjs/ryvax-docs-template">
+    A polished docs application with navigation, API exploration, OpenAPI data, playgrounds, and Ryvax.js runtime configuration.
+  </Card>
+  <Card title="AI chat template" icon="robot" href="https://github.com/kvantjs/ryvax-ai-chat-template">
+    A full-stack chat interface with Gemini integration, server-side secret handling, model fallback, SSE streaming, and search grounding.
+  </Card>
+</Columns>
+
+## Choose a starting point
+
+| If you are building | Start with | What it includes |
+| --- | --- | --- |
+| A framework, API, or product documentation site | Documentation template | Navigation, API explorer, interactive playgrounds, OpenAPI reference, and static deployment configuration. |
+| A conversational product or AI assistant | AI chat template | React UI, Node server, streaming endpoints, model fallback, and server-only Gemini credentials. |
+
+## Documentation template
+
+Clone the repository and install its dependencies:
+
+```bash
+git clone https://github.com/kvantjs/ryvax-docs-template.git
+cd ryvax-docs-template
+npm install
+npm run dev
+```
+
+The production build is static and can be published to Vercel, GitHub Pages, or Netlify. The repository includes GitHub Actions workflows for each target.
+
+## AI chat template
+
+Clone the repository and configure the Gemini credential only in your local shell or a hosting provider's secret manager:
+
+```bash
+git clone https://github.com/kvantjs/ryvax-ai-chat-template.git
+cd ryvax-ai-chat-template
+npm install
+export GEMINI_API_KEY="your-secret"
+npm run dev
+```
+
+The credential is read by the server and is never intended for client-side code. Do not commit `.env`, `.env.local`, or any credential-bearing file.
+
+<Warning>
+The AI chat's complete server-backed experience requires a Node-capable deployment such as Vercel or another host that can run the bundled server. GitHub Pages and the static Netlify workflow publish the client preview only; they cannot execute the SSE API by themselves.
+</Warning>
+
+## Deployment workflows
+
+Both repositories include workflows for Vercel, Netlify, and GitHub Pages. Configure deployment credentials as repository secrets rather than putting them in source files.
+
+| Target | Required configuration | Result |
+| --- | --- | --- |
+| Vercel | `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` | Production deployment from GitHub Actions. |
+| Netlify | `NETLIFY_AUTH_TOKEN`, `NETLIFY_SITE_ID` | Static or provider-supported deployment from GitHub Actions. |
+| GitHub Pages | Pages enabled for the repository | Static build published through the Pages environment. |
+
+## Related topics
+
+- [Installation](/start/installation) — Install the framework and verify the supported runtime.
+- [First app](/start/first-app) — Understand the basic project shape.
+- [Deployment](/operations/deployment) — Review production deployment boundaries.
+- [AI agents](/platform/ai-agents) — Design controlled AI workloads.
+
+## Source and contribution
+
+Open issues and pull requests in the template repositories. Keep framework-specific behavior in the Ryvax.js repository and application-specific policy inside each template so that updates remain portable and easy to review.
+
+## References
+
+[1]: https://github.com/kvantjs/ryvax.js "Ryvax.js source repository"
+[2]: https://github.com/kvantjs/ryvax-docs-template "Ryvax.js documentation template"
+[3]: https://github.com/kvantjs/ryvax-ai-chat-template "Ryvax.js AI chat template"
+[4]: https://vercel.com/docs "Vercel documentation"
+[5]: https://docs.netlify.com/ "Netlify documentation"
+[6]: https://docs.github.com/en/pages "GitHub Pages documentation"
