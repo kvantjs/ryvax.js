@@ -1,5 +1,5 @@
 # Ryvax by Kvant
-![Ryvax By Kbant](https://imgdb.io/i/VzjyGWM.png)
+![Ryvax By Kbant](https://imgdb.io/i/jcVWUZM.png)
 ---
 Package: `@kvantjs/ryvax.js` · CLI: `ryvax` · Node.js: `>=20`
 
