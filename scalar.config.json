@@ -2,8 +2,8 @@
   "$schema": "https://registry.scalar.com/@scalar/schemas/config",
   "scalar": "2.0.0",
   "info": {
-    "title": "Ryvax by Kvant",
-    "description": "React-first full-stack TypeScript framework for deterministic APIs, SSR, streaming, SQL, authentication, jobs, observability, and AI agents."
+    "title": "Ryvax.js — Full-stack TypeScript framework",
+    "description": "Ryvax.js is an open-source React-first full-stack TypeScript framework for web applications, deterministic APIs, SSR, SSG, streaming, authentication, jobs, caching, observability, and AI agents."
   },
   "assetsDir": "docs/site/images",
   "siteConfig": {
@@ -22,10 +22,17 @@
       "darkMode": "docs/site/images/6145.png"
     },
     "head": {
+      "title": "Ryvax.js — Full-stack TypeScript framework documentation",
       "meta": [
         {
           "name": "description",
-          "content": "Ryvax framework documentation"
+          "content": "Ryvax.js is an open-source React-first full-stack TypeScript framework for web applications, deterministic APIs, SSR, SSG, streaming, authentication, jobs, caching, observability, and AI agents."
+        }
+      ],
+      "scripts": [
+        {
+          "path": "docs/seo/ryvax-jsonld.js",
+          "tagPosition": "head"
         }
       ],
       "links": [

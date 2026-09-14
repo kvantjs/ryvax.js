@@ -1,0 +1,85 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://github.com/kvantjs/ryvax.js#software",
+      "name": "Ryvax.js",
+      "alternateName": "Ryvax",
+      "description": "Open-source React-first full-stack TypeScript framework for building web applications, deterministic APIs, server-rendered and statically generated pages, streaming interfaces, jobs, caching, authentication, observability, and AI agent backends.",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Full-stack web framework",
+      "operatingSystem": "Node.js",
+      "programmingLanguage": ["TypeScript", "JavaScript"],
+      "runtimePlatform": "Node.js 20 or newer",
+      "softwareVersion": "2.x",
+      "url": "https://kvantjs.github.io/ryvax/",
+      "sameAs": [
+        "https://github.com/kvantjs/ryvax.js",
+        "https://www.npmjs.com/package/@kvantjs/ryvax.js"
+      ],
+      "codeRepository": "https://github.com/kvantjs/ryvax.js",
+      "downloadUrl": "https://www.npmjs.com/package/@kvantjs/ryvax.js",
+      "license": "https://github.com/kvantjs/ryvax.js/blob/main/LICENSE",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "url": "https://github.com/kvantjs/ryvax.js"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Kvant",
+        "url": "https://github.com/kvantjs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kvant",
+        "url": "https://github.com/kvantjs"
+      },
+      "featureList": [
+        "File-based routing",
+        "React SSR and SSG",
+        "Client hydration",
+        "HTML and data streaming",
+        "Deterministic API routes",
+        "Authentication and authorization primitives",
+        "SQL, cache, job, storage, and metrics adapters",
+        "Portable Node.js deployment"
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://kvantjs.github.io/ryvax/#article",
+      "url": "https://kvantjs.github.io/ryvax/",
+      "headline": "Ryvax.js Documentation: Full-stack TypeScript framework for React applications and APIs",
+      "name": "Ryvax.js Documentation",
+      "description": "Official technical documentation for Ryvax.js, an open-source React-first full-stack TypeScript framework for routing, SSR, SSG, APIs, streaming, jobs, caching, authentication, and observability.",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "proficiencyLevel": "Beginner to Advanced",
+      "dateModified": "2026-09-14",
+      "about": {
+        "@id": "https://github.com/kvantjs/ryvax.js#software"
+      },
+      "isPartOf": {
+        "@id": "https://github.com/kvantjs/ryvax.js#software"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Kvant",
+        "url": "https://github.com/kvantjs"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Kvant",
+        "url": "https://github.com/kvantjs"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kvantjs.github.io/ryvax/"
+      }
+    }
+  ]
+}
