@@ -24,7 +24,7 @@ jobs:
       - name: Publish documentation
         env:
           SCALAR_API_KEY: ${{ secrets.SCALAR_API_KEY }}
-          PROJECT_SLUG: ${{ vars.SCALAR_PROJECT_SLUG || 'ryvax-docs' }}
+          PROJECT_SLUG: ryvax
         run: |
           test -n "$SCALAR_API_KEY" || { echo 'Missing GitHub secret SCALAR_API_KEY'; exit 1; }
           npx --yes @scalar/cli@1.3.2 auth login --token "$SCALAR_API_KEY"
