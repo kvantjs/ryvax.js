@@ -158,7 +158,7 @@
   "background": {
     "color": {
       "light": "#F8FAFC",
-      "dark": "#0B0C0E"
+      "dark": "#000"
     }
   },
   "appearance": {
