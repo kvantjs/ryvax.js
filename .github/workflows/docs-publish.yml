@@ -20,7 +20,7 @@ jobs:
           node-version: 24
           cache: npm
       - name: Validate Scalar configuration
-        run: node -e 'const fs=require("fs"); const p=JSON.parse(fs.readFileSync("scalar.config.json","utf8")); if(p.scalar!=="2.0.0" || !p.navigation?.routes) throw new Error("Invalid scalar.config.json");'
+        run: npx --yes @scalar/cli project check-config ./scalar.config.json
       - name: Publish documentation
         env:
           SCALAR_API_KEY: ${{ secrets.SCALAR_API_KEY }}
@@ -28,4 +28,4 @@ jobs:
         run: |
           test -n "$SCALAR_API_KEY" || { echo 'Missing GitHub secret SCALAR_API_KEY'; exit 1; }
           npx --yes @scalar/cli auth login --token "$SCALAR_API_KEY"
-          npx --yes @scalar/cli project publish --slug "$PROJECT_SLUG"
+          npx --yes @scalar/cli project publish --slug "$PROJECT_SLUG" --config ./scalar.config.json
