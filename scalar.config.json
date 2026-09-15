@@ -17,10 +17,6 @@
         "enabled": true
       }
     },
-    "logo": {
-      "lightMode": "docs/site/images/6144.png",
-      "darkMode": "docs/site/images/6145.png"
-    },
     "head": {
       "title": "Ryvax.js — Full-stack TypeScript framework documentation",
       "meta": [
