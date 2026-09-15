@@ -159,6 +159,10 @@
     "color": {
       "light": "#F8FAFC",
       "dark": "#000"
+    },
+    "image": {
+      "light": "/path/to/docs/images/6776.png",
+      "dark": "/path/to/docs/images/6777.png"
     }
   },
   "appearance": {
