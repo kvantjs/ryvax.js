@@ -3,7 +3,6 @@
 Package: `@kvantjs/ryvax.js` · CLI: `ryvax` · Node.js: `>=20`
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/kvantjs/ryvax.js)
-[![](https://data.jsdelivr.com/v1/package/npm/@kvantjs/ryvax.js/badge)](https://www.jsdelivr.com/package/npm/@kvantjs/ryvax.js)
 
 The StackBlitz project installs and builds the local framework under `example/framework`, then starts the repository's runnable example on port `3000`.
 
@@ -94,7 +93,8 @@ export const POST: ApiHandler = async ({ body, signal }) => {
 };
 ```
 
-Applications can supply a health registry to expose JSON `/health` and `/ready` endpoints. A non-`ok` report returns `503`, and the report includes check status, latency, tags when provided, and an ISO timestamp.
+Applications can supply a health registry to expose JSON `/health` and `/ready` endpoints. A non-`ok` report returns `503`, and the report includes check status, latency, tags when provided, and an ISO timestamp. 
+[![](https://data.jsdelivr.com/v1/package/npm/@kvantjs/ryvax.js/badge)](https://www.jsdelivr.com/package/npm/@kvantjs/ryvax.js)
 
 ## Streaming, agents, and training workflows
 
