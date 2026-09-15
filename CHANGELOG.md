@@ -22,10 +22,7 @@
 
 ## [2.1.0] - 2026-09-09
 
-- Migrated the complete Mintlify documentation source into the canonical Scalar Docs tree under `docs/site/`.
-- Added `scalar.config.json`, Scalar navigation, asset mapping, documentation migration notes, and a GitHub Actions workflow for Scalar publication.
-- The release workflows authenticate Scalar with `SCALAR_API_KEY` and publish the project slug from `SCALAR_PROJECT_SLUG` (default: `ryvax`); npm supports either `NPM_TOKEN` or configured npm trusted publishing.
-- Preserved all existing guides, references, operations pages, images, and MDX content during migration.
+- Preserved all existing guides, references, operations pages, images, and MDX content during the documentation restructuring.
 
 - Added initial App Router-compatible route conventions: `app/` pages and route handlers, `page`/`route` files, route groups, optional catch-all segments, `generateStaticParams`, and deterministic specificity ordering, while preserving the existing `pages/` router.
 - Added persistent app layouts compiled from `layout` boundaries and applied from the outermost to the innermost route segment.
