@@ -1,6 +1,6 @@
 {
   "name": "@kvantjs/ryvax.js",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "React-first full-stack TypeScript framework for SaaS, SQL, authentication, SSR, SSG, streaming, and API routes.",
   "type": "module",
   "main": "./dist/src/index.js",
