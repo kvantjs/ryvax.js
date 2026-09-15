@@ -60,7 +60,7 @@ The build also recognizes `loading.tsx` boundaries and named parallel slots unde
 Server mutations can live in `actions/` modules containing the `"use server"` directive. Ryvax assigns stable action IDs during build and exposes a bounded, origin-checked POST transport at `/_meu/action/:id`. Inputs and outputs must be JSON-serializable. On the client, use `Link`, `createRouter`, and `prefetch` from `@kvantjs/ryvax.js/client` for cancellable same-origin navigation.
 
 ## What Ryvax provides
-![Ryvax By Kbant](https://imgdb.io/i/Kmqwxlc.png)
+![Ryvax By Kbant](https://imgdb.io/i/mu5-TT0.png)
 | Layer | Responsibility |
 | --- | --- |
 | UI and rendering | React 19, TSX, SSR, SSG, hydration, HTML streaming, and client bundles |
