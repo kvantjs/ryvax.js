@@ -641,3 +641,22 @@ test('exposes a stable project graph and actionable diagnostics', () => {
   const diagnostics = diagnoseManifest(manifest, '/tmp/app');
   assert.equal(diagnostics.some((diagnostic) => diagnostic.code === 'RYX-1003'), true);
 });
+
+
+test('selects an adaptive bundler deterministically and honors explicit overrides', async () => {
+  const { analyzeProjectComplexity } = await import('../src/build/complexity.js');
+  const { createBuildOrchestrator } = await import('../src/build/orchestrator.js');
+  const root = await mkdtemp(join(tmpdir(), 'ryvax-builder-selection-'));
+  try {
+    await mkdir(join(root, 'pages'), { recursive: true });
+    await writeFile(join(root, 'pages', 'index.ts'), 'export default () => "ok";\n');
+    const complexity = await analyzeProjectComplexity({ rootDir: root, mode: 'production' }, 1);
+    assert.equal(complexity.selected, 'esbuild');
+    const forced = await createBuildOrchestrator({ rootDir: root, mode: 'production', builder: 'rolldown' }, 1);
+    assert.equal(forced.backend, 'rolldown');
+    const automatic = await createBuildOrchestrator({ rootDir: root, mode: 'production', builder: 'auto' }, 1);
+    assert.equal(automatic.backend, 'esbuild');
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});

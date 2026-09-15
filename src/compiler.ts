@@ -2,7 +2,6 @@ import { promises as fs } from 'node:fs';
 import { dirname, extname, basename, join, relative, resolve, sep } from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
-import * as esbuild from 'esbuild';
 import chokidar, { type FSWatcher } from 'chokidar';
 import { fileToRoutePath, sortRoutes } from './router.js';
 import { renderPage } from './render.js';
@@ -10,6 +9,7 @@ import { stableActionId } from './actions.js';
 import { assertValidClientModule } from './rsc.js';
 import { PluginRegistry } from './plugins.js';
 import { createProjectGraph } from './introspection.js';
+import { createBuildOrchestrator, formatBuildSelection } from './build/orchestrator.js';
 import type { BuildOptions, PageModule, RequestContext, RouteDefinition, RouteManifest } from './types.js';
 
 const SOURCE_EXTENSIONS = new Set(['.ts', '.tsx', '.js', '.jsx', '.mts', '.cts']);
@@ -69,6 +69,9 @@ export async function buildProject(options: BuildOptions): Promise<RouteManifest
 
   try {
     const sourceFiles = await discoverRouteFiles(rootDir);
+    const orchestrator = await createBuildOrchestrator(options, sourceFiles.length);
+    options.builder = orchestrator.backend;
+    if (options.profile || process.env.RYVAX_VERBOSE_BUILD === 'true') console.log(`Ryvax build: ${formatBuildSelection(orchestrator.backend, orchestrator.complexity)}`);
     for (const file of sourceFiles) {
       const source = await fs.readFile(file, 'utf8');
       if (/^\s*["']use client["']/.test(source)) await assertValidClientModule(file);
@@ -243,19 +246,8 @@ export async function buildClient(entry: string, outDir: string, options: BuildO
   const staticDir = join(outDir, 'static');
   await fs.mkdir(staticDir, { recursive: true });
   const output = join(staticDir, 'client.js');
-  await esbuild.build({
-    entryPoints: [entry],
-    outfile: output,
-    bundle: true,
-    platform: 'browser',
-    format: 'esm',
-    target: 'es2022',
-    jsx: 'automatic',
-    jsxImportSource: 'react',
-    sourcemap: options.sourcemap ?? true,
-    minify: options.minify ?? false,
-    logLevel: 'warning'
-  });
+  const orchestrator = await createBuildOrchestrator(options, 1);
+  await orchestrator.build({ id: 'client', file: entry, kind: 'client' }, output, 'browser');
   return output;
 }
 
@@ -268,12 +260,8 @@ async function bundleModule(file: string, outfile: string, options: BuildOptions
   if (useCache) {
     try { await fs.copyFile(cached, outfile); return outfile; } catch { /* cache miss */ }
   }
-  await esbuild.build({
-    entryPoints: [file], outfile, bundle: true, platform: 'node', format: 'esm', target: 'node20',
-    jsx: 'automatic', jsxImportSource: 'react', packages: 'external',
-    sourcemap: options.sourcemap ?? mode === 'development', minify: options.minify ?? mode === 'production',
-    legalComments: 'none', logLevel: 'warning'
-  });
+  const orchestrator = await createBuildOrchestrator(options, 1);
+  await orchestrator.build({ id: file, file, kind: 'route' }, outfile, options.target ?? 'node');
   if (useCache) {
     await fs.mkdir(dirname(cached), { recursive: true });
     await fs.copyFile(outfile, cached);

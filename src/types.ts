@@ -224,5 +224,8 @@ export interface BuildOptions {
   minify?: boolean;
   watch?: boolean;
   cacheBuilds?: boolean;
+  builder?: 'auto' | 'esbuild' | 'rolldown';
+  target?: 'node' | 'browser' | 'edge' | 'worker';
+  profile?: boolean;
   plugins?: import('./plugins.js').RyvaxPlugin[];
 }

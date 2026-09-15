@@ -53,18 +53,20 @@ async function runCommand(mode: 'development' | 'production', args: string[]): P
   const rootDir = resolve(process.cwd());
   const port = numberArg(args, '--port') ?? (Number(process.env.PORT) || 3000);
   const userConfig = await loadConfig(rootDir);
+  const builder = builderArg(args);
+  const profile = args.includes('--profile');
   if (mode === 'production') {
-    const manifest = await buildProject({ rootDir, mode, minify: true, sourcemap: false, plugins: userConfig.plugins });
+    const manifest = await buildProject({ rootDir, mode, minify: true, sourcemap: false, plugins: userConfig.plugins, builder, profile });
     console.log(`Build complete: ${manifest.routes.length} routes.`);
     return;
   }
 
   const hmr = createHmrHub();
-  let app = createAppServer(await buildProject({ rootDir, mode, plugins: userConfig.plugins }), { ...userConfig, rootDir, port }, hmr);
+  let app = createAppServer(await buildProject({ rootDir, mode, plugins: userConfig.plugins, builder, profile }), { ...userConfig, rootDir, port }, hmr);
   await app.listen(port);
   console.log(`Ryvax running at http://localhost:${port}`);
   console.log('HMR active at /_meu/hmr');
-  const watch = await watchProject({ rootDir, mode, plugins: userConfig.plugins }, async (manifest) => {
+  const watch = await watchProject({ rootDir, mode, plugins: userConfig.plugins, builder, profile }, async (manifest) => {
     const refreshedConfig = await loadConfig(rootDir);
     await app.close();
     app = createAppServer(manifest, { ...refreshedConfig, rootDir, port }, hmr);
@@ -126,6 +128,7 @@ async function doctorCommand(args: string[] = []): Promise<void> {
   checks.push(['package.json', existsSync(join(rootDir, 'package.json')), rootDir]);
   checks.push(['pages/', existsSync(join(rootDir, 'pages')), join(rootDir, 'pages')]);
   checks.push(['framework config', ['framework.config.ts', 'framework.config.mts', 'framework.config.js', 'framework.config.mjs'].some((name) => existsSync(join(rootDir, name))), 'optional']);
+  checks.push(['builder', ['auto', 'esbuild', 'rolldown'].includes(builderArg(args) ?? process.env.RYVAX_BUILDER ?? 'auto'), builderArg(args) ?? process.env.RYVAX_BUILDER ?? 'auto']);
   if (existsSync(join(rootDir, 'package.json'))) {
     const packageJson = JSON.parse(await fs.readFile(join(rootDir, 'package.json'), 'utf8')) as { dependencies?: Record<string, string>; devDependencies?: Record<string, string> };
     const dependencies = { ...(packageJson.dependencies ?? {}), ...(packageJson.devDependencies ?? {}) };
@@ -347,6 +350,13 @@ function stringArg(args: string[], name: string): string | undefined {
   return index >= 0 ? args[index + 1] : undefined;
 }
 
+function builderArg(args: string[]): 'auto' | 'esbuild' | 'rolldown' | undefined {
+  const value = stringArg(args, '--builder') ?? args.find((arg) => arg.startsWith('--builder='))?.split('=')[1];
+  if (!value) return undefined;
+  if (value === 'auto' || value === 'esbuild' || value === 'rolldown') return value;
+  throw new Error(`Invalid builder '${value}'. Use auto, esbuild, or rolldown.`);
+}
+
 function printHelp(): void {
-  console.log(`Ryvax\n\nCommands:\n  ryvax create <name> [--template=react|saas|saas-ui|docs|api-docs] [--no-tailwind]\n  ryvax dev [--port 3000]\n  ryvax build\n  ryvax build:vercel [--out-dir .vercel/output]\n  ryvax build:netlify [--out-dir dist]\n  ryvax build:docker [--out-dir dist/docker]\n  ryvax export [--out-dir dist]\n  ryvax deploy [--out-dir dist]\n  ryvax start [--port 3000]\n  ryvax doctor [--json]\n  ryvax routes [--json]\n  ryvax inspect [--json] [--out-dir .meu]\n  ryvax analyze [--json] [--out-dir .meu]\n  ryvax benchmark [--json] [--out-dir .meu] [--no-minify]\n  ryvax migrate create <name>`);
+  console.log(`Ryvax\n\nCommands:\n  ryvax create <name> [--template=react|saas|saas-ui|docs|api-docs] [--no-tailwind]\n  ryvax dev [--port 3000] [--builder auto|esbuild|rolldown] [--profile]\n  ryvax build [--builder auto|esbuild|rolldown] [--profile]\n  ryvax build:vercel [--out-dir .vercel/output]\n  ryvax build:netlify [--out-dir dist]\n  ryvax build:docker [--out-dir dist/docker]\n  ryvax export [--out-dir dist]\n  ryvax deploy [--out-dir dist]\n  ryvax start [--port 3000]\n  ryvax doctor [--json] [--builder auto|esbuild|rolldown]\n  ryvax routes [--json]\n  ryvax inspect [--json] [--out-dir .meu]\n  ryvax analyze [--json] [--out-dir .meu]\n  ryvax benchmark [--json] [--out-dir .meu] [--no-minify]\n  ryvax migrate create <name>`);
 }

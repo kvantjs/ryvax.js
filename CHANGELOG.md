@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+- Added the adaptive build orchestrator with deterministic complexity analysis, `--builder=auto|esbuild|rolldown`, `RYVAX_BUILDER`, build profiling, and explicit backend diagnostics.
+- Added a Rolldown backend alongside the compatibility-preserving esbuild backend, plus automated selection tests and backend fixture validation.
+- Added build-system architecture documentation and migration guidance for future module-graph, code-splitting, cache, and incremental-build work.
+
 ## [2.1.3] - 2026-09-11
 
 - Added persisted project graphs, structured route inspection, bundle analysis, and reproducible project benchmarks.

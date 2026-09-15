@@ -1,6 +1,6 @@
 {
   "name": "@kvantjs/ryvax.js",
-  "version": "2.1.3",
+  "version": "2.3.0",
   "description": "React-first full-stack TypeScript framework for SaaS, SQL, authentication, SSR, SSG, streaming, and API routes.",
   "type": "module",
   "main": "./dist/src/index.js",
@@ -71,6 +71,7 @@
   "dependencies": {
     "chokidar": "^4.0.3",
     "esbuild": "^0.25.0",
+    "rolldown": "^1.2.8",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "zod": "^3.24.0"
