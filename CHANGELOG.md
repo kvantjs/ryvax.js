@@ -6,6 +6,18 @@
 - Added a Rolldown backend alongside the compatibility-preserving esbuild backend, plus automated selection tests and backend fixture validation.
 - Added build-system architecture documentation and migration guidance for future module-graph, code-splitting, cache, and incremental-build work.
 
+- Added per-build complexity analysis caching to avoid rescanning the project before every route bundle. In the 1,000-route harness, the measured build decreased from approximately 76 seconds to approximately 1.6 seconds on Node.js 22.13.0 in the sandbox workload.
+- Added transitive server/client boundary validation for local imports, compiled `.js` specifiers resolving to TypeScript sources, server-only modules, and private environment variables.
+- Added raw, gzip, Brotli, client, server, and zero-client-JavaScript metrics to project benchmarks.
+
+## [2.3.2] - 2026-09-15
+
+- Added build-stage performance improvements, stronger transitive client-boundary checks, and compressed bundle metrics.
+
+## [2.3.1] - 2026-09-15
+
+- Updated package documentation and npm metadata.
+
 ## [2.1.3] - 2026-09-11
 
 - Added persisted project graphs, structured route inspection, bundle analysis, and reproducible project benchmarks.

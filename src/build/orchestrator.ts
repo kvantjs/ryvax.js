@@ -7,6 +7,7 @@ import type { BuildBackend, BuildContext, BuildEntry, BuildOutput, BuildProfile,
 import type { BuildOptions } from '../types.js';
 
 const backends: Record<Exclude<RyvaxBuilderName, 'auto'>, BuildBackend> = { esbuild: esbuildBackend, rolldown: rolldownBackend };
+const complexityCache = new WeakMap<BuildOptions, Awaited<ReturnType<typeof analyzeProjectComplexity>>>();
 
 export async function createBuildOrchestrator(options: BuildOptions, entryCount: number): Promise<{
   backend: Exclude<RyvaxBuilderName, 'auto'>;
@@ -15,7 +16,11 @@ export async function createBuildOrchestrator(options: BuildOptions, entryCount:
   build(entry: BuildEntry, outfile: string, target?: RyvaxBuildTarget): Promise<BuildOutput>;
 }> {
   const started = performance.now();
-  const complexity = await analyzeProjectComplexity(options, entryCount);
+  let complexity = complexityCache.get(options);
+  if (!complexity) {
+    complexity = await analyzeProjectComplexity(options, entryCount);
+    complexityCache.set(options, complexity);
+  }
   const requested = options.builder ?? (process.env.RYVAX_BUILDER as RyvaxBuilderName | undefined) ?? 'auto';
   if (!['auto', 'esbuild', 'rolldown'].includes(requested)) throw new Error(`Unknown Ryvax builder '${requested}'. Use auto, esbuild, or rolldown.`);
   const backend = requested === 'auto' ? complexity.selected : requested;
