@@ -84,6 +84,19 @@ test('rejects non-serializable RSC values and reports client server-only imports
   await rm(root, { recursive: true, force: true });
 });
 
+test('walks local client dependencies and rejects transitive server boundaries', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'ryvax-rsc-transitive-'));
+  const clientFile = join(root, 'client.ts');
+  const serverFile = join(root, 'db.server.ts');
+  await writeFile(clientFile, `'use client'; import { query } from './db.server.js'; export default query;`);
+  await writeFile(serverFile, `'use server'; import fs from 'node:fs'; export function query() { return fs.readFileSync('x'); }`);
+  const { analyzeModule } = await import('../src/rsc.js');
+  const analysis = await analyzeModule(clientFile);
+  assert.equal(analysis.dependencies.length, 2);
+  assert.ok(analysis.invalidClientImports.some((value) => value.includes('db.server')));
+  await rm(root, { recursive: true, force: true });
+});
+
 test('isolates private data cache entries and memoizes request scope', async () => {
   const store = new Map<string, unknown>();
   const adapter = {

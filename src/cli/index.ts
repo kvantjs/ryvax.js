@@ -225,6 +225,11 @@ async function benchmarkCommand(args: string[] = []): Promise<void> {
   console.log(`Routes: ${report.routeCount}`);
   console.log(`Bundles: ${report.bundleCount}`);
   console.log(`Bundle bytes: ${report.bundleBytes}`);
+  console.log(`Gzip bytes: ${report.gzipBytes}`);
+  console.log(`Brotli bytes: ${report.brotliBytes}`);
+  console.log(`Client bytes: ${report.clientBytes} (${report.clientBundleCount} bundle${report.clientBundleCount === 1 ? '' : 's'})`);
+  console.log(`Server bytes: ${report.serverBytes}`);
+  console.log(`Zero-client-JS routes: ${report.zeroClientJsRoutes}`);
   if (report.diagnostics.length) console.log(`Diagnostics: ${report.diagnostics.length}`);
   console.log(`Node: ${report.node}`);
 }

@@ -1,5 +1,6 @@
 import { promises as fs } from 'node:fs';
 import { builtinModules } from 'node:module';
+import { dirname, extname, resolve } from 'node:path';
 
 export type ModuleBoundary = 'server' | 'client' | 'shared';
 
@@ -7,6 +8,8 @@ export interface ModuleAnalysis {
   file: string;
   boundary: ModuleBoundary;
   imports: string[];
+  /** Local modules reached from this file, including the entry module. */
+  dependencies: string[];
   invalidClientImports: string[];
   invalidClientSecrets: string[];
 }
@@ -35,17 +38,76 @@ export class ModuleBoundaryError extends Error {
   }
 }
 
+const SOURCE_EXTENSIONS = ['.ts', '.tsx', '.js', '.jsx', '.mts', '.cts', '.mjs', '.cjs'];
+const builtins = new Set(builtinModules.flatMap((name) => [name, `node:${name}`]));
+const serverOnlyPackages = new Set(['fs', 'fs/promises', 'child_process', 'net', 'tls', 'http', 'https', 'worker_threads', 'module', 'node:fs', 'node:fs/promises', 'node:child_process', 'node:net', 'node:tls', 'node:http', 'node:https', 'node:worker_threads', 'node:module']);
+
+function parseImports(source: string): string[] {
+  const values = [
+    ...source.matchAll(/\bimport\s+(?:type\s+)?(?:[^'"`]+?\sfrom\s*)?['"]([^'"`]+)['"]/g),
+    ...source.matchAll(/\bexport\s+[^'"`]+?\sfrom\s*['"]([^'"`]+)['"]/g),
+    ...source.matchAll(/\brequire\(\s*['"]([^'"`]+)['"]\s*\)/g)
+  ].map((match) => match[1]).filter((value): value is string => Boolean(value));
+  return [...new Set(values)];
+}
+
+async function resolveLocalImport(from: string, specifier: string): Promise<string | undefined> {
+  if (!specifier.startsWith('.')) return undefined;
+  const base = resolve(dirname(from), specifier);
+  const sourceBase = /\.(?:js|jsx|mjs|cjs)$/.test(base) ? base.replace(/\.(?:js|jsx|mjs|cjs)$/, '') : base;
+  const candidates = [base, sourceBase, ...SOURCE_EXTENSIONS.map((extension) => `${sourceBase}${extension}`), ...SOURCE_EXTENSIONS.map((extension) => resolve(sourceBase, `index${extension}`))];
+  for (const candidate of candidates) {
+    try {
+      const stat = await fs.stat(candidate);
+      if (stat.isFile()) return candidate;
+    } catch { /* unresolved optional import */ }
+  }
+  return undefined;
+}
+
 export async function analyzeModule(file: string): Promise<ModuleAnalysis> {
-  const source = await fs.readFile(file, 'utf8');
-  const boundary: ModuleBoundary = /^\s*["']use client["']/.test(source) ? 'client' : /^\s*["']use server["']/.test(source) ? 'server' : 'shared';
-  const imports = [...source.matchAll(/(?:import(?:[^'"`]+from\s*)?|require\(\s*)['"]([^'"`]+)['"]/g)].map((match) => match[1]).filter((value): value is string => Boolean(value));
-  const builtins = new Set(builtinModules.flatMap((name) => [name, `node:${name}`]));
-  const invalidClientImports = boundary === 'client' ? imports.filter((value) => builtins.has(value) || value === 'fs/promises' || value === 'child_process') : [];
-  const envNames = [...source.matchAll(/process\.env\.([A-Z0-9_]+)/g)].map((match) => match[1]).filter((value): value is string => Boolean(value));
-  const invalidClientSecrets = boundary === 'client'
-    ? envNames.filter((value) => !value.startsWith('PUBLIC_') && !value.startsWith('NEXT_PUBLIC_'))
-    : [];
-  return { file, boundary, imports, invalidClientImports, invalidClientSecrets: [...new Set(invalidClientSecrets)] };
+  const entry = resolve(file);
+  const visited = new Set<string>();
+  const dependencies: string[] = [];
+  const invalidClientImports = new Set<string>();
+  const invalidClientSecrets = new Set<string>();
+  let entryBoundary: ModuleBoundary = 'shared';
+
+  async function visit(current: string, isEntry = false): Promise<void> {
+    const absolute = resolve(current);
+    if (visited.has(absolute)) return;
+    visited.add(absolute);
+    dependencies.push(absolute);
+    const source = await fs.readFile(absolute, 'utf8');
+    const boundary: ModuleBoundary = /^\s*["']use client["']/.test(source) ? 'client' : /^\s*["']use server["']/.test(source) ? 'server' : 'shared';
+    if (isEntry) entryBoundary = boundary;
+    const imports = parseImports(source);
+    for (const value of imports) {
+      if (entryBoundary === 'client' && (builtins.has(value) || serverOnlyPackages.has(value) || value.endsWith('.server') || value.includes('.server.'))) invalidClientImports.add(value);
+      const local = await resolveLocalImport(absolute, value);
+      if (local) {
+        const localSource = await fs.readFile(local, 'utf8');
+        if (entryBoundary === 'client' && (/^\s*["']use server["']/.test(localSource) || /(?:^|[./])server(?:[./]|$)/.test(value))) invalidClientImports.add(local);
+        await visit(local);
+      }
+    }
+    if (entryBoundary === 'client') {
+      for (const name of [...source.matchAll(/process\.env\.([A-Z0-9_]+)/g)].map((match) => match[1]).filter((value): value is string => Boolean(value))) {
+        if (!name.startsWith('PUBLIC_') && !name.startsWith('NEXT_PUBLIC_')) invalidClientSecrets.add(name);
+      }
+    }
+  }
+
+  await visit(entry, true);
+  const source = await fs.readFile(entry, 'utf8');
+  return {
+    file: entry,
+    boundary: entryBoundary,
+    imports: parseImports(source),
+    dependencies,
+    invalidClientImports: [...invalidClientImports],
+    invalidClientSecrets: [...invalidClientSecrets]
+  };
 }
 
 export async function assertValidClientModule(file: string): Promise<ModuleAnalysis> {
