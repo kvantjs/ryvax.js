@@ -6,7 +6,7 @@ Package: `@kvantjs/ryvax.js` · CLI: `ryvax` · Node.js: `>=20`
 
 The StackBlitz project installs and builds the local framework under `example/framework`, then starts the repository's runnable example on port `3000`.
 
-**Public package page:** [ryvax package page](https://jeffersoncampos12p-dev.github.io/ryvax/)
+**Public package page:** [ryvax package page](https://kvantjs.github.io/ryvax.js/)
 
 The package page mirrors the public npm package layout and reads production metadata directly from the npm Registry, npm Downloads API, GitHub, and unpkg. It does not use simulated package statistics.
 
