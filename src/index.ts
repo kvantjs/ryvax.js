@@ -8,6 +8,8 @@ export * from './compiler.js';
 export * from './server.js';
 export * from './edge.js';
 export * from './config.js';
+export * from './define-config.js';
+export * from './dx-generate.js';
 export * from './logger.js';
 export * from './render.js';
 export * from './auth.js';

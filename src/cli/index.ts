@@ -8,6 +8,7 @@ import { createAppServer, createHmrHub } from '../server.js';
 import { loadConfig } from '../config.js';
 import { createProjectGraph, diagnoseManifest } from '../introspection.js';
 import { benchmarkProject } from '../benchmark.js';
+import { generateDxTypes } from '../dx-generate.js';
 
 const [command = 'help', ...args] = process.argv.slice(2);
 
@@ -26,6 +27,7 @@ try {
   else if (command === 'analyze') await analyzeCommand(args);
   else if (command === 'inspect') await inspectCommand(args);
   else if (command === 'benchmark') await benchmarkCommand(args);
+  else if (command === 'generate') await generateCommand(args);
   else if (command === 'migrate') await migrateCommand(args);
   else printHelp();
 } catch (error) {
@@ -213,6 +215,12 @@ async function migrateCommand(args: string[]): Promise<void> {
   console.log(`Migration ${id}_${name} created in migrations/.`);
 }
 
+async function generateCommand(args: string[] = []): Promise<void> {
+  const rootDir = resolve(process.cwd());
+  const result = await generateDxTypes(rootDir, stringArg(args, '--out-dir') ?? '.ryvax');
+  console.log(`Generated ${result.routeCount} route declarations in ${result.outDir}`);
+}
+
 async function benchmarkCommand(args: string[] = []): Promise<void> {
   const rootDir = resolve(process.cwd());
   const report = await benchmarkProject(rootDir, { outDir: stringArg(args, '--out-dir'), minify: !args.includes('--no-minify') });
@@ -275,8 +283,8 @@ async function writeTemplate(target: string, projectName: string, useTailwind: b
       dependencies: { '@kvantjs/ryvax.js': '^2.1.0', react: '^19.2.8', 'react-dom': '^19.2.8' },
       devDependencies: { '@types/node': '^22.0.0', '@types/react': '^19.2.18', '@types/react-dom': '^19.2.7', tsx: '^4.19.0', typescript: '^5.7.0', ...(useTailwind ? { tailwindcss: '^3.4.0', postcss: '^8.4.0', autoprefixer: '^10.4.0' } : {}) }
     }, null, 2) + '\n',
-    'tsconfig.json': JSON.stringify({ compilerOptions: { target: 'ES2022', module: 'NodeNext', moduleResolution: 'NodeNext', jsx: 'react-jsx', strict: true, noEmit: true, skipLibCheck: true, types: ['node'] }, include: ['pages', 'src', 'framework.config.ts'] }, null, 2) + '\n',
-    'framework.config.ts': `import type { AppConfig } from '@kvantjs/ryvax.js';\n\nexport default {\n  cache: { enabled: true, defaultTtl: 0, staleWhileRevalidate: 60 },\n  poweredBy: false,\n  observability: { requestLogging: false }\n} satisfies AppConfig;\n`,
+    'tsconfig.json': JSON.stringify({ compilerOptions: { target: 'ES2022', module: 'NodeNext', moduleResolution: 'NodeNext', jsx: 'react-jsx', strict: true, noEmit: true, skipLibCheck: true, types: ['node'], plugins: [{ name: '@kvantjs/ryvax.js/typescript-plugin' }] }, include: ['pages', 'src', 'framework.config.ts', '.ryvax/**/*.d.ts'] }, null, 2) + '\n',
+    'framework.config.ts': `import { defineConfig } from '@kvantjs/ryvax.js';\n\nexport default defineConfig({\n  cache: { enabled: true, defaultTtl: 0, staleWhileRevalidate: 60 },\n  poweredBy: false,\n  observability: { requestLogging: false }\n});\n`,
     'pages/index.tsx': `import type { PageModule } from '@kvantjs/ryvax.js';
 import { App } from '../src/App.js';
 
@@ -363,5 +371,5 @@ function builderArg(args: string[]): 'auto' | 'esbuild' | 'rolldown' | undefined
 }
 
 function printHelp(): void {
-  console.log(`Ryvax\n\nCommands:\n  ryvax create <name> [--template=react|saas|saas-ui|docs|api-docs] [--no-tailwind]\n  ryvax dev [--port 3000] [--builder auto|esbuild|rolldown] [--profile]\n  ryvax build [--builder auto|esbuild|rolldown] [--profile]\n  ryvax build:vercel [--out-dir .vercel/output]\n  ryvax build:netlify [--out-dir dist]\n  ryvax build:docker [--out-dir dist/docker]\n  ryvax export [--out-dir dist]\n  ryvax deploy [--out-dir dist]\n  ryvax start [--port 3000]\n  ryvax doctor [--json] [--builder auto|esbuild|rolldown]\n  ryvax routes [--json]\n  ryvax inspect [--json] [--out-dir .meu]\n  ryvax analyze [--json] [--out-dir .meu]\n  ryvax benchmark [--json] [--out-dir .meu] [--no-minify]\n  ryvax migrate create <name>`);
+  console.log(`Ryvax\n\nCommands:\n  ryvax create <name> [--template=react|saas|saas-ui|docs|api-docs] [--no-tailwind]\n  ryvax dev [--port 3000] [--builder auto|esbuild|rolldown] [--profile]\n  ryvax build [--builder auto|esbuild|rolldown] [--profile]\n  ryvax build:vercel [--out-dir .vercel/output]\n  ryvax build:netlify [--out-dir dist]\n  ryvax build:docker [--out-dir dist/docker]\n  ryvax export [--out-dir dist]\n  ryvax deploy [--out-dir dist]\n  ryvax start [--port 3000]\n  ryvax doctor [--json] [--builder auto|esbuild|rolldown]\n  ryvax routes [--json]\n  ryvax inspect [--json] [--out-dir .meu]\n  ryvax analyze [--json] [--out-dir .meu]\n  ryvax benchmark [--json] [--out-dir .meu] [--no-minify]\n  ryvax generate [--out-dir .ryvax]\n  ryvax migrate create <name>`);
 }

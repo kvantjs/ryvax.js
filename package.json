@@ -29,11 +29,13 @@
     "./adapters": {
       "types": "./dist/src/deployment-adapters.d.ts",
       "import": "./dist/src/deployment-adapters.js"
-    }
+    },
+    "./typescript-plugin": "./typescript-plugin/index.cjs"
   },
   "files": [
     "dist",
     "bin",
+    "typescript-plugin",
     "templates",
     "README.md",
     "LICENSE",
@@ -65,7 +67,12 @@
     "saas",
     "esbuild",
     "full-stack",
-    "framework"
+    "framework",
+    "developer-tools",
+    "typescript-language-service",
+    "typescript-plugin",
+    "file-based-routing",
+    "ai-native"
   ],
   "license": "MIT",
   "dependencies": {
