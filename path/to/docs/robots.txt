@@ -10,7 +10,7 @@ Disallow: /_next/
 Allow: /_next/image
 
 # Keep the documentation base path explicit for crawlers.
-Sitemap: https://docs.kvant.sbs/ryvax/sitemap.xml
+Sitemap: https://dryvax.kvant.sbs/sitemap.xml
 
 # Agent indexes are intentionally linked separately from the XML sitemap.
-# https://docs.kvant.sbs/ryvax/llms.txt
+# https://dryvax.kvant.sbs/llms.txt

@@ -64,7 +64,7 @@ It combines file-based routing, React server-side rendering (SSR), static-site g
 
 - **Current version:** `2.3.4`
 - **Package:** [`@kvantjs/ryvax.js`](https://www.npmjs.com/package/@kvantjs/ryvax.js)
-- **Documentation:** [Ryvax documentation](https://kvantjs.github.io/ryvax.js/)
+- **Documentation:** [Ryvax documentation](https://dryvax.kvant.sbs.js/)
 - **License:** [MIT](./LICENSE)
 - **Node.js:** `>=20`
 
@@ -127,7 +127,7 @@ Ryvax provides these contracts in one TypeScript-oriented framework while keepin
 
 ### Live resources
 
-- [Documentation site](https://kvantjs.github.io/ryvax.js/)
+- [Documentation site](https://dryvax.kvant.sbs.js/)
 - [npm package](https://www.npmjs.com/package/@kvantjs/ryvax.js)
 - [GitHub repository](https://github.com/kvantjs/ryvax.js)
 - [StackBlitz example](https://stackblitz.com/github/kvantjs/ryvax.js)
@@ -369,7 +369,7 @@ Ryvax.js is distributed under the [MIT License](./LICENSE).
 - GitHub: <https://github.com/kvantjs/ryvax.js>
 - Issues: <https://github.com/kvantjs/ryvax.js/issues>
 - npm: <https://www.npmjs.com/package/@kvantjs/ryvax.js>
-- Documentation: <https://kvantjs.github.io/ryvax.js/>
+- Documentation: <https://dryvax.kvant.sbs.js/>
 - LinkedIn: `[adicione o perfil oficial]`
 - Portfolio: `[adicione o site oficial]`
 - Email: `[adicione o email público de contato]`
@@ -473,7 +473,7 @@ npm run build
 
 ## Documentação
 
-Leia o [README](https://github.com/kvantjs/ryvax.js#readme) e a [documentação oficial](https://kvantjs.github.io/ryvax.js/).
+Leia o [README](https://github.com/kvantjs/ryvax.js#readme) e a [documentação oficial](https://dryvax.kvant.sbs.js/).
 
 ## Agradecimentos
 

@@ -14,7 +14,7 @@
         programmingLanguage: ['TypeScript', 'JavaScript'],
         runtimePlatform: 'Node.js 20 or newer',
         softwareVersion: '2.x',
-        url: 'https://kvantjs.github.io/ryvax/',
+        url: 'https://dryvax.kvant.sbs/',
         sameAs: ['https://github.com/kvantjs/ryvax.js', 'https://www.npmjs.com/package/@kvantjs/ryvax.js'],
         codeRepository: 'https://github.com/kvantjs/ryvax.js',
         downloadUrl: 'https://www.npmjs.com/package/@kvantjs/ryvax.js',
@@ -27,8 +27,8 @@
       },
       {
         '@type': 'TechArticle',
-        '@id': 'https://kvantjs.github.io/ryvax/#article',
-        url: 'https://kvantjs.github.io/ryvax/',
+        '@id': 'https://dryvax.kvant.sbs/#article',
+        url: 'https://dryvax.kvant.sbs/',
         headline: 'Ryvax.js Documentation: Full-stack TypeScript framework for React applications and APIs',
         name: 'Ryvax.js Documentation',
         description: 'Official technical documentation for Ryvax.js, an open-source React-first full-stack TypeScript framework for routing, SSR, SSG, APIs, streaming, jobs, caching, authentication, and observability.',
@@ -40,7 +40,7 @@
         isPartOf: { '@id': 'https://github.com/kvantjs/ryvax.js#software' },
         author: { '@type': 'Organization', name: 'Kvant', url: 'https://github.com/kvantjs' },
         publisher: { '@type': 'Organization', name: 'Kvant', url: 'https://github.com/kvantjs' },
-        mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://kvantjs.github.io/ryvax/' }
+        mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://dryvax.kvant.sbs/' }
       }
     ]
   };

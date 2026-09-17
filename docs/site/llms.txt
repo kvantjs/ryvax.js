@@ -10,7 +10,7 @@
 - Current published version: `2.1.1`
 - npm: https://www.npmjs.com/package/@kvantjs/ryvax.js
 - GitHub: https://github.com/kvantjs/ryvax.js
-- Documentation: https://docs.kvant.sbs/ryvax
+- Documentation: https://dryvax.kvant.sbs
 - Changelog: https://github.com/kvantjs/ryvax.js/blob/main/CHANGELOG.md
 - Issues: https://github.com/kvantjs/ryvax.js/issues
 - License: MIT
@@ -60,52 +60,52 @@ The compiler discovers route files and produces a manifest. The runtime uses tha
 
 ### Start and learn by doing
 
-- https://docs.kvant.sbs/ryvax/ — Orientation, tracks, and entry points.
-- https://docs.kvant.sbs/ryvax/start/installation — Prerequisites, CLI templates, existing projects, environment files, verification, and failure modes.
-- https://docs.kvant.sbs/ryvax/start/quickstart — Create a project, add a health route, inspect the manifest, and start production output.
-- https://docs.kvant.sbs/ryvax/start/learning-path — Progressive path from first request to operational ownership.
-- https://docs.kvant.sbs/ryvax/start/first-app — Build a page, API route, failure path, manifest check, and production artifact.
-- https://docs.kvant.sbs/ryvax/start/recipe-projects-api — Build a project API with a replaceable repository boundary.
-- https://docs.kvant.sbs/ryvax/start/saas-starter — Tenant context, identity, authorization, usage, billing seams, and durable jobs.
+- https://dryvax.kvant.sbs/ — Orientation, tracks, and entry points.
+- https://dryvax.kvant.sbs/start/installation — Prerequisites, CLI templates, existing projects, environment files, verification, and failure modes.
+- https://dryvax.kvant.sbs/start/quickstart — Create a project, add a health route, inspect the manifest, and start production output.
+- https://dryvax.kvant.sbs/start/learning-path — Progressive path from first request to operational ownership.
+- https://dryvax.kvant.sbs/start/first-app — Build a page, API route, failure path, manifest check, and production artifact.
+- https://dryvax.kvant.sbs/start/recipe-projects-api — Build a project API with a replaceable repository boundary.
+- https://dryvax.kvant.sbs/start/saas-starter — Tenant context, identity, authorization, usage, billing seams, and durable jobs.
 
 ### Core runtime and rendering
 
-- https://docs.kvant.sbs/ryvax/core/architecture — Ownership map for compiler, manifest, HTTP runtime, request context, renderer, and adapters.
-- https://docs.kvant.sbs/ryvax/core/routing — Static, dynamic, catch-all, precedence, parameters, 404 behavior, and negative-space tests.
-- https://docs.kvant.sbs/ryvax/core/api-routes — Methods, validation, status codes, headers, error contracts, cancellation, and response serialization.
-- https://docs.kvant.sbs/ryvax/core/configuration — Config discovery, environment loading, explicit defaults, and validation.
-- https://docs.kvant.sbs/ryvax/core/react-ssr — Server rendering, data ownership, serialization, hydration, and recovery.
-- https://docs.kvant.sbs/ryvax/core/react-server-components — RSC boundary, server-only modules, client references, serializability, and experimental constraints.
-- https://docs.kvant.sbs/ryvax/core/execution-and-streaming — Async iteration, byte streams, React streaming, deadlines, abort propagation, and backpressure.
+- https://dryvax.kvant.sbs/core/architecture — Ownership map for compiler, manifest, HTTP runtime, request context, renderer, and adapters.
+- https://dryvax.kvant.sbs/core/routing — Static, dynamic, catch-all, precedence, parameters, 404 behavior, and negative-space tests.
+- https://dryvax.kvant.sbs/core/api-routes — Methods, validation, status codes, headers, error contracts, cancellation, and response serialization.
+- https://dryvax.kvant.sbs/core/configuration — Config discovery, environment loading, explicit defaults, and validation.
+- https://dryvax.kvant.sbs/core/react-ssr — Server rendering, data ownership, serialization, hydration, and recovery.
+- https://dryvax.kvant.sbs/core/react-server-components — RSC boundary, server-only modules, client references, serializability, and experimental constraints.
+- https://dryvax.kvant.sbs/core/execution-and-streaming — Async iteration, byte streams, React streaming, deadlines, abort propagation, and backpressure.
 
 ### Platform boundaries
 
-- https://docs.kvant.sbs/ryvax/platform/sql — Provider-neutral SQL contracts, parameterization, transactions, migrations, and connection ownership.
-- https://docs.kvant.sbs/ryvax/platform/auth — Sessions, secrets, CSRF, identity, and separating authentication from authorization.
-- https://docs.kvant.sbs/ryvax/platform/security — Trusted types, nonces, security headers, payload limits, private-network protection, and safe defaults.
-- https://docs.kvant.sbs/ryvax/platform/cache-jobs-storage — Response cache, data cache, jobs, retries, idempotency, dead letters, and storage adapters.
-- https://docs.kvant.sbs/ryvax/platform/health-observability — Health checks, readiness, structured logs, request IDs, metrics, and dependency signals.
-- https://docs.kvant.sbs/ryvax/platform/ai-agents — Streaming and AI workflow boundaries, durable work, cancellation, evaluation, governance, and provider ownership.
+- https://dryvax.kvant.sbs/platform/sql — Provider-neutral SQL contracts, parameterization, transactions, migrations, and connection ownership.
+- https://dryvax.kvant.sbs/platform/auth — Sessions, secrets, CSRF, identity, and separating authentication from authorization.
+- https://dryvax.kvant.sbs/platform/security — Trusted types, nonces, security headers, payload limits, private-network protection, and safe defaults.
+- https://dryvax.kvant.sbs/platform/cache-jobs-storage — Response cache, data cache, jobs, retries, idempotency, dead letters, and storage adapters.
+- https://dryvax.kvant.sbs/platform/health-observability — Health checks, readiness, structured logs, request IDs, metrics, and dependency signals.
+- https://dryvax.kvant.sbs/platform/ai-agents — Streaming and AI workflow boundaries, durable work, cancellation, evaluation, governance, and provider ownership.
 
 ### Exact reference contracts
 
-- https://docs.kvant.sbs/ryvax/reference/types — Public TypeScript types and the meaning of exported contracts.
-- https://docs.kvant.sbs/ryvax/reference/cli — CLI commands, arguments, output, exit codes, mutation, and automation behavior.
-- https://docs.kvant.sbs/ryvax/reference/http-contracts — Request and response semantics, status codes, headers, body limits, and errors.
-- https://docs.kvant.sbs/ryvax/reference/adapters — Adapter capabilities, provider boundaries, portability, and lifecycle ownership.
-- https://docs.kvant.sbs/ryvax/reference/compatibility — Supported runtime/package compatibility and migration expectations.
-- https://docs.kvant.sbs/ryvax/reference/integrations — Integration lifecycle, capability metadata, tests, security review, and support surface.
+- https://dryvax.kvant.sbs/reference/types — Public TypeScript types and the meaning of exported contracts.
+- https://dryvax.kvant.sbs/reference/cli — CLI commands, arguments, output, exit codes, mutation, and automation behavior.
+- https://dryvax.kvant.sbs/reference/http-contracts — Request and response semantics, status codes, headers, body limits, and errors.
+- https://dryvax.kvant.sbs/reference/adapters — Adapter capabilities, provider boundaries, portability, and lifecycle ownership.
+- https://dryvax.kvant.sbs/reference/compatibility — Supported runtime/package compatibility and migration expectations.
+- https://dryvax.kvant.sbs/reference/integrations — Integration lifecycle, capability metadata, tests, security review, and support surface.
 
 ### Production and operations
 
-- https://docs.kvant.sbs/ryvax/operations/deployment — Build once, inject runtime configuration, probe readiness, roll out gradually, and retain rollback.
-- https://docs.kvant.sbs/ryvax/operations/production — Capacity, service objectives, runbooks, degraded mode, incidents, and recovery.
-- https://docs.kvant.sbs/ryvax/operations/migrations — Deterministic migration files, checksums, transactions, pending state, and rollback.
-- https://docs.kvant.sbs/ryvax/operations/benchmark — Workload design, concurrency, warmup, percentiles, memory, dependencies, and honest comparisons.
-- https://docs.kvant.sbs/ryvax/operations/jobs-and-shutdown — Queue lifecycle, retries, idempotency, draining, cancellation, and process signals.
-- https://docs.kvant.sbs/ryvax/operations/release-checks — Typecheck, tests, build, package inspection, clean consumer import, audit, SBOM, and provenance.
-- https://docs.kvant.sbs/ryvax/operations/ecosystem — Integration governance, compatibility evidence, ownership, maintenance, and deprecation process.
-- https://docs.kvant.sbs/ryvax/reference/deprecated-versions — Historical compatibility and deprecation information. Do not infer that every deprecated release had a security vulnerability.
+- https://dryvax.kvant.sbs/operations/deployment — Build once, inject runtime configuration, probe readiness, roll out gradually, and retain rollback.
+- https://dryvax.kvant.sbs/operations/production — Capacity, service objectives, runbooks, degraded mode, incidents, and recovery.
+- https://dryvax.kvant.sbs/operations/migrations — Deterministic migration files, checksums, transactions, pending state, and rollback.
+- https://dryvax.kvant.sbs/operations/benchmark — Workload design, concurrency, warmup, percentiles, memory, dependencies, and honest comparisons.
+- https://dryvax.kvant.sbs/operations/jobs-and-shutdown — Queue lifecycle, retries, idempotency, draining, cancellation, and process signals.
+- https://dryvax.kvant.sbs/operations/release-checks — Typecheck, tests, build, package inspection, clean consumer import, audit, SBOM, and provenance.
+- https://dryvax.kvant.sbs/operations/ecosystem — Integration governance, compatibility evidence, ownership, maintenance, and deprecation process.
+- https://dryvax.kvant.sbs/reference/deprecated-versions — Historical compatibility and deprecation information. Do not infer that every deprecated release had a security vulnerability.
 
 ## Package exports
 

@@ -7,4 +7,4 @@ Disallow: /cdn-cgi/
 Disallow: /_next/
 Allow: /_next/image
 
-Sitemap: https://docs.kvant.sbs/ryvax/sitemap.xml
+Sitemap: https://dryvax.kvant.sbs/sitemap.xml
