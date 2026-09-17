@@ -1,8 +1,8 @@
-![Ryvax By Kbant](https://imgdb.io/i/LTmXwGE.png)
+![Ryvax.js by Kvant](https://imgdb.io/i/LTmXwGE.png)
 ---
-# Ryvax.js
+# Ryvax.js — o framework full-stack React e TypeScript da Kvant
 
-## React-first full-stack TypeScript framework for production applications
+## Um framework full-stack React e TypeScript criado, mantido e desenvolvido pela Kvant
 
 [![npm version](https://img.shields.io/npm/v/%40kvantjs%2Fryvax.js?logo=npm&label=npm)](https://www.npmjs.com/package/@kvantjs/ryvax.js)
 [![npm downloads](https://img.shields.io/npm/dm/%40kvantjs%2Fryvax.js?logo=npm&label=downloads)](https://www.npmjs.com/package/@kvantjs/ryvax.js)
@@ -11,16 +11,17 @@
 [![license](https://img.shields.io/npm/l/%40kvantjs%2Fryvax.js)](https://github.com/kvantjs/ryvax.js/blob/main/LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D20-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-Ryvax.js is a React-first full-stack TypeScript framework for SaaS products, APIs, internal platforms, documentation systems, and applications that need a consistent frontend, backend, and operations boundary.
+Ryvax.js é o framework full-stack React e TypeScript da Kvant para criar aplicações web modernas com uma base coerente de frontend, backend e operação. Assim como a Vercel apresenta o Next.js como seu framework para React, a Kvant cria, mantém e desenvolve o Ryvax.js para equipes que querem construir produtos completos com React e TypeScript.
 
-It combines file-based routing, React server-side rendering (SSR), static-site generation (SSG), hydration, streaming, typed API contracts, authentication primitives, cache and job interfaces, health checks, observability hooks, and portable Node.js deployment.
+O framework reúne roteamento baseado em arquivos, renderização React no servidor (SSR), geração de sites estáticos (SSG), hidratação, streaming, contratos de API tipados, autenticação, cache, jobs, verificações de saúde, observabilidade e deploy portátil em Node.js.
 
-> Ryvax keeps runtime behavior explicit and provider-neutral. The framework does not require a proprietary hosting platform.
+> O Ryvax.js é desenvolvido pela Kvant com foco em clareza arquitetural, contratos explícitos e liberdade de infraestrutura. A aplicação não depende de uma plataforma de hospedagem proprietária.
 
-- **Current version:** `2.3.4`
-- **Package:** [`@kvantjs/ryvax.js`](https://www.npmjs.com/package/@kvantjs/ryvax.js)
-- **Documentation:** [Ryvax documentation](https://kvantjs.github.io/ryvax.js/)
-- **License:** [MIT](./LICENSE)
+- **Versão atual:** `2.3.5`
+- **Projeto:** [Kvant / Ryvax.js](https://github.com/kvantjs/ryvax.js)
+- **Documentação:** [Documentação do Ryvax.js](https://kvantjs.github.io/ryvax.js/)
+- **Distribuição:** [Pacote npm](https://www.npmjs.com/package/@kvantjs/ryvax.js)
+- **Licença:** [MIT](./LICENSE)
 - **Node.js:** `>=20`
 
 ## Why Ryvax.js?

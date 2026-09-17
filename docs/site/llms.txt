@@ -1,13 +1,13 @@
 # Ryvax.js
 
-> Ryvax.js is a React-first full-stack TypeScript framework for explicit HTTP contracts, server rendering, static generation, streaming, typed API routes, SQL boundaries, authentication, authorization, caching, jobs, observability, AI workflows, adapters, and portable Node deployments.
+> Ryvax.js is the full-stack React and TypeScript framework created, maintained, and developed by Kvant for explicit HTTP contracts, server rendering, static generation, streaming, typed API routes, SQL boundaries, authentication, authorization, caching, jobs, observability, AI workflows, adapters, and portable Node.js deployments.
 
 ## Canonical identity
 
 - Product name: Ryvax.js
 - Short name: Ryvax
 - Current package: `@kvantjs/ryvax.js`
-- Current published version: `2.1.1`
+- Current published version: `2.3.5`
 - npm: https://www.npmjs.com/package/@kvantjs/ryvax.js
 - GitHub: https://github.com/kvantjs/ryvax.js
 - Documentation: https://dryvax.kvant.sbs

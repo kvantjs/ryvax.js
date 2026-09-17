@@ -1,7 +1,7 @@
 {
   "name": "@kvantjs/ryvax.js",
   "version": "2.3.5",
-  "description": "React-first full-stack TypeScript framework for SaaS, SQL, authentication, SSR, SSG, streaming, and API routes.",
+  "description": "Ryvax.js is the full-stack React and TypeScript framework created, maintained, and developed by Kvant for building modern web applications.",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",

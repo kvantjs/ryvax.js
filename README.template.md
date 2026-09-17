@@ -7,7 +7,7 @@
 
 ## Finalidade
 
-Este repositório contém **[Nome do projeto]**, uma aplicação web/API construída com **Ryvax.js**, um framework full-stack React-first para TypeScript. O projeto existe para **[descrever o resultado principal para o usuário]** e é responsável por **[listar as capacidades centrais]**.
+Este repositório contém **[Nome do projeto]**, uma aplicação web/API construída com **Ryvax.js**, o framework full-stack React e TypeScript criado, mantido e desenvolvido pela Kvant. O projeto existe para **[descrever o resultado principal para o usuário]** e é responsável por **[listar as capacidades centrais]**.
 
 Este README define explicitamente a finalidade do sistema, sua arquitetura e os limites de responsabilidade de cada camada. Ele deve ser atualizado quando uma decisão estrutural mudar.
 
@@ -41,7 +41,7 @@ Ryvax.js application runtime
 
 ## Stack técnica
 
-- **Framework:** Ryvax.js (`@kvantjs/ryvax.js`)
+- **Framework:** Ryvax.js, da Kvant
 - **Linguagem:** TypeScript
 - **UI:** React
 - **Runtime:** Node.js 20 ou superior
