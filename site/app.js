@@ -1,5 +1,5 @@
 const PACKAGE_NAME = '@kvantjs/ryvax.js';
-const PACKAGE_VERSION = '1.2.0';
+const PACKAGE_VERSION = '2.3.5';
 const REPOSITORY = 'kvantjs/ryvax.js';
 const REPOSITORY_URL = `https://github.com/${REPOSITORY}`;
 const REGISTRY_URL = `https://registry.npmjs.org/${encodeURIComponent(PACKAGE_NAME)}/${PACKAGE_VERSION}`;
@@ -314,9 +314,9 @@ function renderDependents(npms) {
   text('#dependents-count', `${formatNumber(actualCount)} dependents reported by npm ecosystem data`);
   const container = $('#dependents-content');
   if (actualCount === 0) {
-    container.innerHTML = '<h3>No dependents yet</h3><p>The live ecosystem metadata reports that no public packages currently depend on this package.</p><a href="https://www.npmjs.com/package/@kvantjs/ryvax.js/v/1.2.0?activeTab=dependents" target="_blank" rel="noreferrer">Verify on npm ↗</a>';
+    container.innerHTML = '<h3>No dependents yet</h3><p>The live ecosystem metadata reports that no public packages currently depend on this package.</p><a href="https://www.npmjs.com/package/@kvantjs/ryvax.js/v/2.3.5?activeTab=dependents" target="_blank" rel="noreferrer">Verify on npm ↗</a>';
   } else {
-    container.innerHTML = `<h3>${formatNumber(actualCount)} dependents</h3><p>npm reports packages that depend on this release. Open the canonical listing to explore them.</p><a href="https://www.npmjs.com/package/@kvantjs/ryvax.js/v/1.2.0?activeTab=dependents" target="_blank" rel="noreferrer">Explore dependents on npm ↗</a>`;
+    container.innerHTML = `<h3>${formatNumber(actualCount)} dependents</h3><p>npm reports packages that depend on this release. Open the canonical listing to explore them.</p><a href="https://www.npmjs.com/package/@kvantjs/ryvax.js/v/2.3.5?activeTab=dependents" target="_blank" rel="noreferrer">Explore dependents on npm ↗</a>`;
   }
 }
 

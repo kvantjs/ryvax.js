@@ -267,7 +267,7 @@ async function writeTemplate(target: string, projectName: string, useTailwind: b
     packageJson.private = true;
     if (template === 'docs' || template === 'api-docs') {
       const dependencies = packageJson.dependencies as Record<string, string> | undefined;
-      if (dependencies) dependencies['@kvantjs/ryvax.js'] = '^2.1.3';
+      if (dependencies) dependencies['@kvantjs/ryvax.js'] = '^2.3.5';
     }
     await fs.writeFile(packageFile, JSON.stringify(packageJson, null, 2) + '\n');
     return;
@@ -280,7 +280,7 @@ async function writeTemplate(target: string, projectName: string, useTailwind: b
       scripts: useTailwind
         ? { dev: 'npm run css:build && ryvax dev', build: 'npm run css:build && ryvax build', 'build:vercel': 'npm run css:build && ryvax build:vercel', 'build:netlify': 'npm run css:build && ryvax build:netlify', deploy: 'npm run css:build && ryvax deploy', start: 'ryvax start', 'css:build': 'tailwindcss -i ./src/styles.css -o ./public/styles.css --minify', typecheck: 'tsc --noEmit' }
         : { dev: 'ryvax dev', build: 'ryvax build', 'build:vercel': 'ryvax build:vercel', 'build:netlify': 'ryvax build:netlify', deploy: 'ryvax deploy', start: 'ryvax start', typecheck: 'tsc --noEmit' },
-      dependencies: { '@kvantjs/ryvax.js': '^2.1.0', react: '^19.2.8', 'react-dom': '^19.2.8' },
+      dependencies: { '@kvantjs/ryvax.js': '^2.3.5', react: '^19.2.8', 'react-dom': '^19.2.8' },
       devDependencies: { '@types/node': '^22.0.0', '@types/react': '^19.2.18', '@types/react-dom': '^19.2.7', tsx: '^4.19.0', typescript: '^5.7.0', ...(useTailwind ? { tailwindcss: '^3.4.0', postcss: '^8.4.0', autoprefixer: '^10.4.0' } : {}) }
     }, null, 2) + '\n',
     'tsconfig.json': JSON.stringify({ compilerOptions: { target: 'ES2022', module: 'NodeNext', moduleResolution: 'NodeNext', jsx: 'react-jsx', strict: true, noEmit: true, skipLibCheck: true, types: ['node'], plugins: [{ name: '@kvantjs/ryvax.js/typescript-plugin' }] }, include: ['pages', 'src', 'framework.config.ts', '.ryvax/**/*.d.ts'] }, null, 2) + '\n',
