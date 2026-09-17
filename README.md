@@ -83,7 +83,7 @@ Ryvax provides these contracts in one TypeScript-oriented framework while keepin
 
 ### Live resources
 
-- [Documentation site](https://kvantjs.github.io/ryvax.js/)
+- [Documentation site](https://dryvax.kvant.sbs/)
 - [npm package](https://www.npmjs.com/package/@kvantjs/ryvax.js)
 - [GitHub repository](https://github.com/kvantjs/ryvax.js)
 - [StackBlitz example](https://stackblitz.com/github/kvantjs/ryvax.js)
