@@ -1,19 +1,19 @@
-# [Nome do projeto]
+# [Project name]
 
-> [Uma frase objetiva sobre o produto e o problema que ele resolve.]
+> [A concise statement describing the product and the problem it solves.]
 
 [![Ryvax.js](https://img.shields.io/badge/framework-Ryvax.js-111827)](https://github.com/kvantjs/ryvax.js)
 [![TypeScript](https://img.shields.io/badge/language-TypeScript-3178C6)](https://www.typescriptlang.org/)
 
-## Finalidade
+## Purpose
 
-Este repositório contém **[Nome do projeto]**, uma aplicação web/API construída com **Ryvax.js**, o framework full-stack React e TypeScript criado, mantido e desenvolvido pela Kvant. O projeto existe para **[descrever o resultado principal para o usuário]** e é responsável por **[listar as capacidades centrais]**.
+This repository contains **[Project name]**, a web application or API built with **Ryvax.js**, the full-stack React and TypeScript framework created, maintained, and developed by Kvant. The project exists to **[describe the primary user outcome]** and is responsible for **[list its core capabilities]**.
 
-Este README define explicitamente a finalidade do sistema, sua arquitetura e os limites de responsabilidade de cada camada. Ele deve ser atualizado quando uma decisão estrutural mudar.
+This README defines the system's purpose, architecture, and the responsibility boundaries of each layer. Update it whenever a structural decision changes.
 
-## Arquitetura
+## Architecture
 
-O sistema usa uma arquitetura full-stack TypeScript executada no runtime Node.js. Ryvax.js coordena o roteamento baseado em arquivos, renderização React no servidor, geração estática, hidratação no cliente, handlers HTTP, streaming, limites de requisição e o ciclo de deploy.
+The system uses a full-stack TypeScript architecture running on Node.js. Ryvax.js coordinates file-based routing, server-side React rendering, static generation, client hydration, HTTP handlers, streaming, request limits, and the deployment lifecycle.
 
 ```text
 Browser
@@ -29,71 +29,71 @@ Ryvax.js application runtime
   └── deployment artifact   → portable Node.js server or static export
 ```
 
-### Responsabilidades
+### Responsibilities
 
-| Camada | Responsabilidade | Não deve conter |
+| Layer | Responsibility | Must not contain |
 | --- | --- | --- |
-| `pages/` ou `app/` | Rotas, layouts, páginas React e handlers HTTP | Acesso direto e espalhado a infraestrutura |
-| `src/` | Componentes, domínio, casos de uso e módulos compartilhados | Segredos ou configuração específica do ambiente |
-| `framework.config.ts` | Limites, cache, observabilidade e políticas do runtime | Dados de negócio mutáveis |
-| Adaptadores | Integração com banco, cache, filas, storage e métricas | Regras de apresentação |
-| `public/` | Assets estáticos públicos | Credenciais ou dados privados |
+| `pages/` or `app/` | Routes, layouts, React pages, and HTTP handlers | Scattered direct access to infrastructure |
+| `src/` | UI, domain logic, use cases, and shared modules | Secrets or environment-specific configuration |
+| `framework.config.ts` | Runtime limits, caching, observability, and policies | Mutable business data |
+| Adapters | Database, cache, queue, storage, and metrics integrations | Presentation rules |
+| `public/` | Public static assets | Credentials or private data |
 
-## Stack técnica
+## Technical stack
 
-- **Framework:** Ryvax.js, da Kvant
-- **Linguagem:** TypeScript
+- **Framework:** Ryvax.js by Kvant
+- **Language:** TypeScript
 - **UI:** React
-- **Runtime:** Node.js 20 ou superior
-- **Renderização:** SSR, SSG, streaming e hidratação quando aplicável
-- **APIs:** handlers HTTP baseados em rotas Ryvax
-- **Persistência:** [banco/adaptador]
-- **Cache:** [adaptador ou “não utilizado”]
-- **Jobs:** [fila/adaptador ou “não utilizado”]
-- **Deploy:** [Node.js, Docker, Vercel, Cloudflare, GitHub Pages para SSG, etc.]
+- **Runtime:** Node.js 20 or newer
+- **Rendering:** SSR, SSG, streaming, and hydration where applicable
+- **APIs:** HTTP handlers based on Ryvax routes
+- **Persistence:** [database or adapter]
+- **Caching:** [adapter or “not used”]
+- **Jobs:** [queue or adapter, or “not used”]
+- **Deployment:** [Node.js, Docker, Vercel, Cloudflare, GitHub Pages for SSG, etc.]
 
-## Estrutura do repositório
+## Repository structure
 
 ```text
 [project] /
-├── app/ ou pages/       # Rotas e layouts Ryvax
-├── src/                 # UI, domínio e integrações
-├── public/              # Assets públicos
-├── framework.config.ts  # Configuração do runtime Ryvax
-├── package.json         # Scripts e dependências
-└── README.md            # Contrato técnico e guia do projeto
+├── app/ or pages/       # Ryvax routes and layouts
+├── src/                 # UI, domain logic, and integrations
+├── public/              # Public assets
+├── framework.config.ts  # Ryvax runtime configuration
+├── package.json         # Scripts and dependencies
+└── README.md            # Project contract and guide
 ```
 
-## Desenvolvimento local
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Variáveis de ambiente devem ser documentadas em `.env.example`. Nunca versionar `.env`, tokens, chaves privadas ou credenciais reais.
+Document environment variables in `.env.example`. Never commit `.env` files, tokens, private keys, or real credentials.
 
 ## Scripts
 
-| Comando | Finalidade |
+| Command | Purpose |
 | --- | --- |
-| `npm run dev` | Inicia o desenvolvimento com Ryvax e HMR |
-| `npm run typecheck` | Verifica os tipos TypeScript |
-| `npm run build` | Gera o build de produção Ryvax |
-| `npm run export` | Exporta as páginas SSG para hosting estático, quando aplicável |
-| `npm test` | Executa os testes do projeto |
+| `npm run dev` | Start development with Ryvax and HMR |
+| `npm run typecheck` | Check TypeScript types |
+| `npm run build` | Generate the Ryvax production build |
+| `npm run export` | Export SSG pages for static hosting, where applicable |
+| `npm test` | Run the project tests |
 
-## Decisões e limites operacionais
+## Decisions and operational boundaries
 
-- A aplicação não depende de uma plataforma proprietária para executar o artefato Ryvax.
-- APIs, autenticação, jobs e persistência são responsabilidades do runtime e dos adaptadores explicitamente configurados.
-- Páginas SSG podem ser publicadas em CDN ou GitHub Pages; handlers API, SSR e streaming exigem um runtime Node.js compatível.
-- Operações externas devem propagar cancelamento por `RequestContext.signal` quando a API oferecer suporte.
-- Mudanças de schema, contratos HTTP e variáveis de ambiente devem incluir documentação e testes.
+- The application does not depend on a proprietary platform to run its Ryvax artifact.
+- APIs, authentication, jobs, and persistence are responsibilities of the runtime and explicitly configured adapters.
+- SSG pages can be published to a CDN or GitHub Pages; API handlers, SSR, and streaming require a compatible Node.js runtime.
+- External operations should propagate cancellation through `RequestContext.signal` when the API supports it.
+- Schema changes, HTTP contracts, and environment variables must include documentation and tests.
 
-## Qualidade e segurança
+## Quality and security
 
-Antes de abrir um pull request, execute:
+Before opening a pull request, run:
 
 ```bash
 npm run typecheck
@@ -101,14 +101,14 @@ npm test
 npm run build
 ```
 
-Para endpoints que recebem entrada externa, valide o payload, limite o tamanho do corpo, aplique autenticação/autorização quando necessário e documente o modelo de ameaça. Não faça chamadas de rede do servidor sem validação SSRF adequada.
+For endpoints that accept external input, validate the payload, limit the request body size, apply authentication and authorization where required, and document the threat model. Do not make server-side network requests without appropriate SSRF protection.
 
-## Licença
+## License
 
-[Escolha e informe a licença do projeto.]
+[Choose and state the project license.]
 
 ## Links
 
 - [Ryvax.js](https://github.com/kvantjs/ryvax.js)
-- [Documentação oficial](https://kvantjs.github.io/ryvax/)
-- [Pacote npm](https://www.npmjs.com/package/@kvantjs/ryvax.js)
+- [Official documentation](https://kvantjs.github.io/ryvax.js/)
+- [npm package](https://www.npmjs.com/package/@kvantjs/ryvax.js)
