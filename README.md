@@ -1,4 +1,4 @@
-![Ryvax By Kbant](https://imgdb.io/i/dmA-384.png)
+![Ryvax By Kbant](https://imgdb.io/i/LTmXwGE.png)
 ---
 # Ryvax.js
 
