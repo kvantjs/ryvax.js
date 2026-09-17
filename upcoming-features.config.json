@@ -1,0 +1,20 @@
+{
+  "mainBranches": ["main", "master", "develop"],
+  "upcomingIssueTitle": "🚀 Upcoming Features",
+  "initialVersion": "0.1.0",
+  "includeAuthors": true,
+  "includePullRequestLinks": true,
+  "increment": "patch",
+  "botName": "Upcoming Features Bot",
+  "botLogin": "upcoming-features-bot",
+  "identificationMessage": "Atualizado automaticamente por Upcoming Features Bot.",
+  "categories": {
+    "breaking": "⚠️ Alterações Incompatíveis",
+    "feature": "🚀 Novas Funcionalidades",
+    "bug": "🐛 Correções de Bugs",
+    "improvement": "🧰 Melhorias",
+    "documentation": "📚 Documentação",
+    "security": "🔒 Segurança",
+    "other": "🔄 Outras Alterações"
+  }
+}

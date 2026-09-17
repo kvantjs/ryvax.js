@@ -1,0 +1,47 @@
+name: Upcoming Features Bot
+
+on:
+  pull_request_target:
+    types: [closed]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  group: upcoming-features-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  update-upcoming-features:
+    if: >-
+      github.event_name == 'release' || github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request_target' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.UPCOMING_FEATURES_APP_ID }}
+          private-key: ${{ secrets.UPCOMING_FEATURES_APP_PRIVATE_KEY }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Upcoming Features Bot
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          GITHUB_API_URL: ${{ github.api_url }}
+        run: node "$GITHUB_WORKSPACE/scripts/upcoming-features-bot.js"
