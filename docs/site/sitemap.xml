@@ -1,37 +1,183 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://docs.kvant.sbs/ryvax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/start/installation</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/start/quickstart</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/start/learning-path</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/start/first-app</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/start/recipe-projects-api</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/start/saas-starter</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/architecture</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/react-ssr</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/routing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/api-routes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/configuration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/execution-and-streaming</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/core/react-server-components</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/platform/sql</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/platform/auth</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/platform/security</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/platform/cache-jobs-storage</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/platform/health-observability</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/platform/ai-agents</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/reference/types</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/reference/cli</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/reference/http-contracts</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/reference/adapters</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/reference/compatibility</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/reference/integrations</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/deployment</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/production</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/migrations</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/benchmark</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/jobs-and-shutdown</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/release-checks</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/operations/ecosystem</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://docs.kvant.sbs/ryvax/llms.txt</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/api-routes</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/architecture</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/configuration</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/execution-and-streaming</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/react-server-components</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/react-ssr</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/core/routing</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax</loc>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/benchmark</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/deployment</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/ecosystem</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/jobs-and-shutdown</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/migrations</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/production</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/operations/release-checks</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/platform/ai-agents</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/platform/auth</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/platform/cache-jobs-storage</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/platform/health-observability</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/platform/security</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/platform/sql</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/adapters</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/cli</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/compatibility</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/deprecated-versions</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/http-contracts</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/integrations</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/reference/types</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/first-app</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/installation</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/learning-path</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/quickstart</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/recipe-projects-api</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/saas-starter</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/start/templates</loc>
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://docs.kvant.sbs/ryvax/llms.txt</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>

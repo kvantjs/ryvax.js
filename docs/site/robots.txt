@@ -1,15 +1,10 @@
-# Ryvax.js documentation crawler policy
-# Documentation is public and may be indexed and used as reference context.
-# Model training is not authorized by this file.
+# Public crawler policy for the Ryvax.js documentation site
+# The documentation is public and may be indexed as a technical reference.
 
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=no,use=reference
 Allow: /
 Disallow: /cdn-cgi/
 Disallow: /_next/
 Allow: /_next/image
 
 Sitemap: https://docs.kvant.sbs/ryvax/sitemap.xml
-
-# Machine-readable indexes
-# https://docs.kvant.sbs/ryvax/llms.txt
