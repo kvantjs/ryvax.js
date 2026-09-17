@@ -1,4 +1,5 @@
 import type { BuildOptions } from '../types.js';
+import type { ModuleGraph } from './graph.js';
 
 export type RyvaxBuilderName = 'auto' | 'esbuild' | 'rolldown';
 export type RyvaxBuildTarget = 'node' | 'browser' | 'edge' | 'worker';
@@ -15,17 +16,38 @@ export interface BuildContext {
   target: RyvaxBuildTarget;
   entries: BuildEntry[];
   options: BuildOptions;
+  graph?: ModuleGraph;
+}
+
+export interface BuildArtifact {
+  file: string;
+  kind: 'entry' | 'chunk' | 'asset' | 'sourcemap';
+  entryId?: string;
+  bytes?: number;
+}
+
+export interface BuildManifest {
+  schemaVersion: 1;
+  backend: Exclude<RyvaxBuilderName, 'auto'>;
+  target: RyvaxBuildTarget;
+  mode: BuildContext['mode'];
+  entries: Record<string, string>;
+  artifacts: BuildArtifact[];
+  generatedAt: string;
 }
 
 export interface BuildOutput {
   file: string;
   backend: Exclude<RyvaxBuilderName, 'auto'>;
   entry: BuildEntry;
+  artifacts?: BuildArtifact[];
+  manifest?: BuildManifest;
 }
 
 export interface BuildBackend {
   readonly name: Exclude<RyvaxBuilderName, 'auto'>;
   build(context: BuildContext, entry: BuildEntry, outfile: string): Promise<BuildOutput>;
+  compileConfig?(context: BuildContext, configFile: string): Promise<string>;
 }
 
 export interface ComplexityReport {

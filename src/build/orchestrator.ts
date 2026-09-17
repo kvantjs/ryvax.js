@@ -1,6 +1,7 @@
 import { promises as fs } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { analyzeProjectComplexity } from './complexity.js';
+import { createModuleGraph, serializeModuleGraph } from './graph.js';
 import { esbuildBackend } from './backends/esbuild.js';
 import { rolldownBackend } from './backends/rolldown.js';
 import type { BuildBackend, BuildContext, BuildEntry, BuildOutput, BuildProfile, RyvaxBuilderName, RyvaxBuildTarget } from './types.js';
@@ -35,9 +36,14 @@ export async function createBuildOrchestrator(options: BuildOptions, entryCount:
     complexity,
     profile,
     async build(entry, outfile, target = entry.kind === 'client' ? 'browser' : 'node') {
-      const context: BuildContext = { rootDir: resolve(options.rootDir), mode: options.mode ?? 'development', target, entries: [entry], options };
+      const graph = await createModuleGraph(options.rootDir, [entry.file]);
+      const context: BuildContext = { rootDir: resolve(options.rootDir), mode: options.mode ?? 'development', target, entries: [entry], options, graph };
       await fs.mkdir(dirname(outfile), { recursive: true });
       const result = await backends[backend].build(context, entry, outfile);
+      const outDir = resolve(options.rootDir, options.outDir ?? '.meu');
+      await fs.mkdir(outDir, { recursive: true });
+      await fs.writeFile(resolve(outDir, 'module-graph.json'), serializeModuleGraph(graph));
+      if (result.manifest) await fs.writeFile(resolve(outDir, 'build-manifest.json'), JSON.stringify(result.manifest, null, 2) + '\n');
       profile.durationMs = Number((performance.now() - started).toFixed(3));
       if (options.profile) {
         const profileFile = resolve(options.rootDir, options.outDir ?? '.meu', 'build-profile.json');

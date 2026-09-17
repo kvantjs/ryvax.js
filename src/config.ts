@@ -1,24 +1,14 @@
 import { promises as fs } from 'node:fs';
 import { join, resolve } from 'node:path';
-import * as esbuild from 'esbuild';
 import type { AppConfig } from './types.js';
+import { esbuildBackend } from './build/backends/esbuild.js';
 
 export async function loadConfig(rootDir: string): Promise<AppConfig> {
   const resolvedRoot = resolve(rootDir);
   const env = await loadEnvFiles(resolvedRoot);
   const configFile = await findConfigFile(resolvedRoot);
   if (!configFile) return { rootDir: resolvedRoot, env };
-  const result = await esbuild.build({
-    entryPoints: [configFile],
-    bundle: true,
-    platform: 'node',
-    format: 'esm',
-    target: 'node20',
-    packages: 'external',
-    write: false,
-    logLevel: 'silent'
-  });
-  const source = result.outputFiles[0]?.text;
+  const source = await esbuildBackend.compileConfig?.({ rootDir: resolvedRoot, mode: 'development', target: 'node', entries: [], options: { rootDir: resolvedRoot } }, configFile);
   if (!source) throw new Error(`Could not compile ${configFile}`);
   const imported = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`) as { default?: AppConfig } & AppConfig;
   const userConfig = imported.default ?? imported;
