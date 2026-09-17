@@ -47,6 +47,7 @@ export interface BuildOutput {
 export interface BuildBackend {
   readonly name: Exclude<RyvaxBuilderName, 'auto'>;
   build(context: BuildContext, entry: BuildEntry, outfile: string): Promise<BuildOutput>;
+  buildBatch?(context: BuildContext, entries: BuildEntry[], outDir: string): Promise<BuildOutput[]>;
   compileConfig?(context: BuildContext, configFile: string): Promise<string>;
 }
 

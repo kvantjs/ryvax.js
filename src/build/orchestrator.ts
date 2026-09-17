@@ -15,6 +15,7 @@ export async function createBuildOrchestrator(options: BuildOptions, entryCount:
   complexity: Awaited<ReturnType<typeof analyzeProjectComplexity>>;
   profile: BuildProfile;
   build(entry: BuildEntry, outfile: string, target?: RyvaxBuildTarget): Promise<BuildOutput>;
+  buildBatch(entries: BuildEntry[], outDir: string, target?: RyvaxBuildTarget): Promise<BuildOutput[]>;
 }> {
   const started = performance.now();
   let complexity = complexityCache.get(options);
@@ -51,6 +52,18 @@ export async function createBuildOrchestrator(options: BuildOptions, entryCount:
         await fs.writeFile(profileFile, JSON.stringify(profile, null, 2) + '\n');
       }
       return result;
+    },
+    async buildBatch(entries, outDir, target = entries[0]?.kind === 'client' ? 'browser' : 'node') {
+      if (!entries.length) return [];
+      const graph = await createModuleGraph(options.rootDir, entries.map((entry) => entry.file));
+      const context: BuildContext = { rootDir: resolve(options.rootDir), mode: options.mode ?? 'development', target, entries, options, graph };
+      await fs.mkdir(resolve(outDir), { recursive: true });
+      const batch = backends[backend].buildBatch;
+      if (batch) return batch.call(backends[backend], context, entries, resolve(outDir));
+      return Promise.all(entries.map((entry) => {
+        const name = entry.id.replace(/[^A-Za-z0-9._-]+/g, '-');
+        return backends[backend].build(context, entry, resolve(outDir, `${name || 'entry'}.mjs`));
+      }));
     }
   };
 }
