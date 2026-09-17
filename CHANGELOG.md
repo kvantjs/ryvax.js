@@ -10,6 +10,29 @@
 - Added transitive server/client boundary validation for local imports, compiled `.js` specifiers resolving to TypeScript sources, server-only modules, and private environment variables.
 - Added raw, gzip, Brotli, client, server, and zero-client-JavaScript metrics to project benchmarks.
 
+## [2.3.5] - 2026-09-16
+
+Version 2.3.5 is a documentation and repository-presentation release. It does not change the runtime, compiler, public TypeScript API, dependency graph, or deployment adapters.
+
+### Documentation and project identity
+
+- Added the Ryvax.js project logo to the repository README so the framework identity is visible immediately on GitHub and in repository previews.
+- Added a visual separator beneath the README header to establish a clearer boundary between project branding and the technical introduction.
+- Corrected the README image reference to the final hosted logo asset.
+- Preserved the existing README structure, feature descriptions, framework claims, supported Node.js range, npm package link, documentation link, and MIT license reference.
+
+### Package and release metadata
+
+- Published `@kvantjs/ryvax.js@2.3.5` without changing the runtime implementation.
+- Synchronized the root `package-lock.json` metadata with package version `2.3.5`.
+- Published the package through the repository's GitHub Actions npm workflow using the `v2.3.5` tag.
+
+### Compatibility
+
+- No breaking changes are included in this release.
+- No new runtime APIs, route conventions, compiler behavior, or adapter contracts are introduced.
+- Applications upgrading from `2.3.4` should not require source changes; the visible change is the improved repository presentation.
+
 ## [2.3.2] - 2026-09-15
 
 - Added build-stage performance improvements, stronger transitive client-boundary checks, and compressed bundle metrics.
@@ -94,6 +117,7 @@ This consolidated release introduces the production platform foundation describe
 - Added a complete React CLI template.
 - Added a reproducible React benchmark against the Next.js Pages Router.
 
+[2.3.5]: https://github.com/kvantjs/ryvax.js/releases/tag/v2.3.5
 [2.1.3]: https://github.com/kvantjs/ryvax.js/releases/tag/v2.1.3
 [2.0.0]: https://github.com/kvantjs/ryvax.js/releases/tag/v2.0.0
 [1.0.0]: https://github.com/kvantjs/ryvax.js/releases/tag/v1.0.0
